@@ -1,34 +1,20 @@
-# glimmer-demos
+# CGOL
 
-This README outlines the details of collaborating on this Glimmer application.
-A short introduction of this app could easily go here.
+### Overview
 
-## Prerequisites
+All individual cells are binary either dead (0) or alive (1)
 
-You will need the following things properly installed on your computer.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Yarn](https://yarnpkg.com/en/)
-* [Ember CLI](https://ember-cli.com/)
+### Rules
 
-## Installation
+1. Generation Rule #1
+If an alive cell has < 2 live neighbor cells it dies
 
-* `git clone <repository-url>` this repository
-* `cd glimmer-demos`
-* `yarn`
+2. Generation Rule #2
+If an alive cell has 2 || 3 live neighbor cells it lives on to the next generation
 
-## Running / Development
+3. Generation Rule #3
+If an alive cell has > 3 live neighbor cells it dies
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-## Further Reading / Useful Links
-
-* [glimmerjs](http://github.com/tildeio/glimmer/)
-* [ember-cli](https://ember-cli.com/)
+4. Generation Rule #4
+If a dead cell has === 3 live neighbors it becomes alive
