@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>LI API</title>
+  <script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key: 'IKwfn2R44itLH2mM'
+    authorize: true
+    onLoad: onLinkedInLoad
+    client_id: '86qx1hpnul1o11'
+</script>
+<script type="text/javascript">
+  
+  // Setup an event listener to make an API call once auth is complete
+  function onLinkedInLoad() {
+      IN.Event.on(IN, "auth", getProfileData);
+  }
+
+  // Handle the successful return from the API call
+  function onSuccess(data) {
+      console.log(data);
+  }
+
+  // Handle an error response from the API call
+  function onError(error) {
+      console.log(error);
+  }
+
+  // Use the API call wrapper to request the member's basic profile data
+  function getProfileData() {
+      IN.API.Raw("/people/~").result(onSuccess).error(onError);
+  }
+
+</script>
+</head>
+<body>
+  <h5>HACKATHON</h5>
+  <script type="in/Login"></script>  
+</body>
+</html>
