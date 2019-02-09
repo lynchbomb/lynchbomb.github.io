@@ -5,7 +5,33 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sienna's Books</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script src="./public/js/epub.min.js"></script>
+  <script>
+    var book = ePub("./public/epub/The_Wonderful_Beautiful_Day.epub");
+    var rendition = book.renderTo(document.body, {
+      manager: "continuous",
+      snap: true
+    });
+    rendition.on("rendered", function (section) {
+      // console.log("rendered", section);
+      var nextSection = section.next();
+      var prevSection = section.prev();
+      var current = book.navigation && book.navigation.get(section.href);
+      if (current) {
+        document.title = current.label;
+      }
+    });
+    rendition.on("relocated", function (location) {
+      // console.log("locationChanged", location)
+      console.log("locationChanged start", location.start.cfi)
+      // console.log("locationChanged end", location.end.cfi)
+    });
+    window.addEventListener("unload", function () {
+      console.log("unloading");
+      this.book.destroy();
+    });
+  </script>
   <style>
     body {
       background: #7a7a7a;
